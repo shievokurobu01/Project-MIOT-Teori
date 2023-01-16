@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "author": "Fatur Rasyid",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": -57, "left": 197.15, "attrs": {} },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic1",
+      "top": -141.75,
+      "left": -44.75,
+      "attrs": { "distance": "2" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 20.24,
+      "left": -8.52,
+      "rotate": 270,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": -103.75,
+      "left": 148.11,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -81.04,
+      "left": 417.69,
+      "attrs": { "volume": "0.1" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "ultrasonic1:GND", "esp:GND.2", "black", [ "v0" ] ],
+    [ "ultrasonic1:ECHO", "esp:D13", "green", [ "v0" ] ],
+    [ "ultrasonic1:TRIG", "esp:D12", "green", [ "v0" ] ],
+    [ "ultrasonic1:VCC", "esp:VIN", "red", [ "v0" ] ],
+    [ "esp:D14", "r1:1", "green", [ "h0" ] ],
+    [ "led2:A", "r1:2", "green", [ "v21.41", "h74.78" ] ],
+    [ "led2:C", "esp:GND.1", "black", [ "v370.17", "h537.88", "v-62.38" ] ],
+    [ "bz1:1", "esp:GND.1", "green", [ "v0" ] ],
+    [ "bz1:2", "esp:D2", "green", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
